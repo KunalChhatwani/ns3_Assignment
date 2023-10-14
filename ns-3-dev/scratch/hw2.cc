@@ -117,10 +117,10 @@ int main (int argc, char *argv[])
 
     // Random propagation model with uniform random distribution
 	Ptr<LogDistanceShadowingPropagationLossModel> randomProp = CreateObject<LogDistanceShadowingPropagationLossModel> ();
-	randomProp->SetAttribute("Exponent", DoubleValue(std::stod(Exponent)));
+	randomProp->SetAttribute("Exponent", DoubleValue(2.5));
 	randomProp->SetAttribute("Variable", StringValue ("ns3::NormalRandomVariable[Mean=0|Variance=2]"));
 	
-        for (double distance = 200.0; distance <= 400.0; distance += 50.0)
+        for (double distance = 200.0; distance <= 500.0; distance += 50.0)
 	{
 		Gnuplot2dDataset dataset = TestProbabilistic (randomProp, distance);
 		//New dataset for each distance. Adds a line to the plot
