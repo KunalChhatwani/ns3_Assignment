@@ -107,7 +107,7 @@ int main (int argc, char *argv[])
   //Set the random seed value
   RngSeedManager::SetSeed (3);  
   
-  GnuplotCollection gnuplots ("outputPdf.pdf");
+  GnuplotCollection gnuplots ("output.pdf");
 
   {
 	Gnuplot plot;
@@ -116,7 +116,7 @@ int main (int argc, char *argv[])
 	plot.AppendExtra ("set key outside");
 
     // Random propagation model with uniform random distribution
-	Ptr<LogDistanceShadowingPropagationLossModel> randomProp = CreateObject<LogDistanceShadowingPropagationLossModel> ();
+	Ptr<LogShadowingPropagationLossModel> randomProp = CreateObject<LogShadowingPropagationLossModel> ();
 	randomProp->SetAttribute("Exponent", DoubleValue(2.5));
 	randomProp->SetAttribute("Variable", StringValue ("ns3::NormalRandomVariable[Mean=0|Variance=2]"));
 	
@@ -130,7 +130,7 @@ int main (int argc, char *argv[])
 		plot.AddDataset(dataset);
 	}
 	
-    plot.SetTitle ("LogShadowingPropogationModel( Exponent = "+Exponent+" | Mean = "+Mean+" | Variance = "+Variance+")" );
+    plot.SetTitle ("LogDistance	ShadowingPropogationModel" );
     gnuplots.AddPlot (plot);
   }
   
